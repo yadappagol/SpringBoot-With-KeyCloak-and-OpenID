@@ -1,0 +1,10 @@
+server:
+  port: 9090
+
+
+keycloak:
+  realm: dby123
+  auth-server-url: http://localhost:8180/auth
+  resource: springboot-demo
+  public-client: true
+  bearer-only: true
