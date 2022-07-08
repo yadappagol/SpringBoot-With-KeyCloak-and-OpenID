@@ -26,7 +26,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeServiceImpl service;
 
-	@GetMapping("/addEmployee")
+	@PostMapping("/addEmployee")
 	@RolesAllowed("user")
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
 		return ResponseEntity.ok(service.addEmployee(employee));
@@ -46,13 +46,13 @@ public class EmployeeController {
 		return ResponseEntity.ok(service.getAllEmployee());
 	}
 
-	@GetMapping("/updateEmployee")
+	@PutMapping("/updateEmployee")
 	@RolesAllowed({ "user", "admin" })
 	public ResponseEntity<?> updateEmployee(@RequestBody Employee employee) {
 		return ResponseEntity.ok(service.updateEmployee(employee));
 	}
 
-	@GetMapping("/deleteEmployee/{empId}")
+	@DeleteMapping("/deleteEmployee/{empId}")
 	@RolesAllowed("admin")
 	public ResponseEntity<?> deleteEmployee(@PathVariable int empId) {
 		service.deleteEmployee(empId);
